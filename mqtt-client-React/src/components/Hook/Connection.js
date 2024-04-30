@@ -13,22 +13,22 @@ const Connection = ({ connect, disconnect, connectBtn }) => {
   const [form] = Form.useForm()
   const initialConnectionOptions = {
     // ws or wss
-    protocol: 'ws',
-    host: 'broker.emqx.io',
+    protocol: 'wss',
+    host: 'test.mosquitto.org',
     clientId: 'emqx_react_' + Math.random().toString(16).substring(2, 8),
     // ws -> 8083; wss -> 8084
-    port: 8083,
+    port: 8081,
     /**
      * By default, EMQX allows clients to connect without authentication.
      * https://docs.emqx.com/en/enterprise/v4.4/advanced/auth.html#anonymous-login
      */
-    username: 'emqx_test',
-    password: 'emqx_test',
+    username: '',
+    password: '',
   }
 
   const handleProtocolChange = (value) => {
     form.setFieldsValue({
-      port: value === 'wss' ? 8084 : 8083,
+      port: value === 'wss' ? 8091 : 8080,
     })
   }
 
