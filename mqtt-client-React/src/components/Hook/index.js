@@ -4,6 +4,8 @@ import Publisher from './Publisher'
 import Subscriber from './Subscriber'
 import Receiver from './Receiver'
 import mqtt from 'mqtt'
+// import crypto from 'crypto'
+
 
 export const QosOption = createContext([])
 // https://github.com/mqttjs/MQTT.js#qos
@@ -64,7 +66,7 @@ const HookMqtt = () => {
 
       // https://github.com/mqttjs/MQTT.js#event-message
       client.on('message', (topic, message) => {
-        const payload = { topic, message: message.toString() }
+        const payload = { topic, message: message }
         setPayload(payload)
         console.log(`received message: ${message} from topic: ${topic}`)
       })
